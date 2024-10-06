@@ -32,6 +32,9 @@ public class User {
   @Size(max = 120)
   private String password;
 
+  @Column(name = "is_enabled")
+  private boolean isEnabled = false;  // padrão false até confirmação=
+
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 
         joinColumns = @JoinColumn(name = "user_id"), 
@@ -86,4 +89,6 @@ public class User {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
+  public void setEnabled(Boolean isEnabled) { this.isEnabled = isEnabled; }
 }
